@@ -4,6 +4,23 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
+# Je rajoute des mapping pour chaque API ou RSS pour les faire correspondre à Articles
+    article_sources:
+        # # Exemple API simple
+        # - apiUrl: 'https://api.spaceflightnewsapi.net/v3/articles'
+        #   mapping:
+        #     title: 'title'
+        #     content: 'summary'
+        #     url: 'url'
+        #     imageURL: 'imageUrl'
+        #     source: 'newsSite'
+        #     author: 'author'
+        #     publishedAt: 'publishedAt'
+        # # Exemple API tableau
+        # - apiUrl: 'https://saurav.tech/NewsAPI/top-headlines/category/health/fr.json'
+        # # Exemple flux RSS xml
+        - rssUrl: 'https://www.lemonde.fr/rss/une.xml'
+
 
 services:
     # default configuration for services in *this* file
@@ -22,3 +39,13 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+    App\Service\ApiArticleService:
+        arguments:
+            $httpClient: '@http_client'
+            $entityManager: '@doctrine.orm.entity_manager'
+            $logger: '@logger'
+    App\Service\ApiArrowService:
+        arguments:
+            $httpClient: '@http_client'
+            $entityManager: '@doctrine.orm.entity_manager'
+            $logger: '@logger'            
