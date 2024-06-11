@@ -12,7 +12,7 @@ use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 class FetchApiCommand extends Command
 {
     protected static $defaultName = 'app:fetch-articles-api';
-
+    // command = php bin/console app:fetch-articles-api
     private $articleFetcher;
     private $params;
 

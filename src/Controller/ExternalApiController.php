@@ -21,7 +21,7 @@ class ExternalApiController extends AbstractController
             'GET',
             'https://api.github.com/repos/symfony/symfony-docs'
         );
-        return new JsonResponse($response->getContent(), $response->getStatusCode(), [], true);
+        return new JsonResponse($response->getContent(), $response->getStatusCode(), [], true); //affiche les données Json d'une autre API mais le ne les stocke pas en BDD
     }
 }
 
